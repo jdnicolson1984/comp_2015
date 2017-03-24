@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>James Nicolson Lab 3 - JQuery</title>
+    <script src="https://code.jquery.com/jquery-3.2.0.min.js" integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $("img").click(function() {
+                $(this).css("border", "3px red solid");
+            });
+
+            $("#div1 img").mouseover(function() {
+                $(this).css("width", "100px");
+            });
+
+            $("p").dblclick(function() {
+                $(this).css("color", "blue");
+            });
+
+            $("#div3 p").mouseover(function() {
+                $(this).css("background-color", "yellow");
+            });
+        });
+    </script>
+    <style>
+        img {
+            width: 200px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="div1">
+        <img src="cat.jpg" alt="cat">
+        <img src="dog.jpg" alt="dog">
+        <img src="fish.jpg" alt="fish">
+    </div>
+    <div id="div2">
+        <p id="p1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, velit tempora? Reprehenderit esse corrupti vero ipsam debitis at ad facilis dicta ipsum corporis, sapiente porro dolor doloremque neque, culpa quo.</p>
+        <p id="p2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, doloribus. Aliquam rem repellat cum officia ullam, ad tempora consectetur, molestias enim aliquid magni. Nisi molestias magni deserunt asperiores doloribus, nulla!</p>
+        <p id="p3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi quae sapiente magnam, quo asperiores, officia molestias velit facilis ex possimus? Consequatur, vero, voluptatibus. Vitae expedita, veritatis corporis iste nulla quibusdam.</p>
+    </div>
+    <div id="div3">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quas molestiae autem, eius quisquam. Officiis dolorem, laudantium dolorum temporibus dolores placeat. Vitae harum corrupti assumenda, veritatis explicabo possimus perferendis
+            mollitia.
+        </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt sapiente eligendi quam, praesentium odit nostrum saepe quisquam, aliquam corrupti itaque, architecto corporis vitae quia doloremque, dolorem inventore beatae libero alias!</p>
+        <img src="bird.jpg" alt="bird">
+        <img src="turtle.jpg" alt="turtle">
+    </div>
+    <script>
+    </script>
+</body>
+
+</html>

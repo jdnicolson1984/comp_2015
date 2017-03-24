@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>James Nicolson Lab 3 - Javascript</title>
+    <script>
+        window.onload = function() {
+            var images = document.getElementsByTagName('img');
+            var div1Img = document.querySelectorAll('#div1 img');
+            var para = document.getElementsByTagName('p');
+            var div3Para = document.getElementById('div3').getElementsByTagName('p');
+
+            for (var i = 0; i < images.length; i++) {
+                images[i].onclick = function() {
+                    this.style.border = "3px red solid";
+                }
+            }
+
+            for (var i = 0; i < div1Img.length; i++) {
+                div1Img[i].onmouseover = function() {
+                    this.style.width = "100px";
+                }
+            }
+
+            for (var i = 0; i < para.length; i++) {
+                para[i].ondblclick = function() {
+                    this.style.color = "blue";
+                }
+            }
+
+            for (var i = 0; i < div3Para.length; i++) {
+                div3Para[i].onmouseover = function() {
+                    this.style.backgroundColor = "yellow"
+                }
+            }
+        }
+    </script>
+    <style>
+        img {
+            width: 200px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="div1">
+        <img src="cat.jpg" alt="cat">
+        <img src="dog.jpg" alt="dog">
+        <img src="fish.jpg" alt="fish">
+    </div>
+    <div id="div2">
+        <p id="p1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, velit tempora? Reprehenderit esse corrupti vero ipsam debitis at ad facilis dicta ipsum corporis, sapiente porro dolor doloremque neque, culpa quo.</p>
+        <p id="p2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, doloribus. Aliquam rem repellat cum officia ullam, ad tempora consectetur, molestias enim aliquid magni. Nisi molestias magni deserunt asperiores doloribus, nulla!</p>
+        <p id="p3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi quae sapiente magnam, quo asperiores, officia molestias velit facilis ex possimus? Consequatur, vero, voluptatibus. Vitae expedita, veritatis corporis iste nulla quibusdam.</p>
+    </div>
+    <div id="div3">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quas molestiae autem, eius quisquam. Officiis dolorem, laudantium dolorum temporibus dolores placeat. Vitae harum corrupti assumenda, veritatis explicabo possimus perferendis
+            mollitia.
+        </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt sapiente eligendi quam, praesentium odit nostrum saepe quisquam, aliquam corrupti itaque, architecto corporis vitae quia doloremque, dolorem inventore beatae libero alias!</p>
+        <img src="bird.jpg" alt="bird">
+        <img src="turtle.jpg" alt="turtle">
+    </div>
+</body>
+
+</html>

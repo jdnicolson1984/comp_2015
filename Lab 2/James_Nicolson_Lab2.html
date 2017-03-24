@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>James Nicolson Lab 2</title>
+		<script type="text/javascript">
+
+			var xmas = new Date(2017,11,25).getTime();
+			var today = new Date().getTime();
+			var diff = xmas - today
+
+			alert(Math.round(diff/(1000*60*60*24)));
+
+			var week = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+			var filtered = [];
+
+			for(var i = 0; i < week.length; i++){
+				if(week[i].indexOf('sd') !== -1){
+					alert(week[i]);
+					filtered.push(week[i]);
+				}
+			}
+
+			alert(filtered.toString());
+
+			var fName = prompt('What is your first name?');
+			var sName = prompt('What is you surname');
+
+			console.log(fName+' '+sName);
+
+		</script>
+	</head>
+	<body>
+
+
+	</body>
+</html>

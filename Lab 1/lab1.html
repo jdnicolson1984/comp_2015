@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- JAMES NICOLSON -->
+		<meta charset="UTF-8">
+		<title>Lab 1</title>
+		<style type="text/css">
+			img{
+				box-shadow: 13px 26px 41px -5px rgba(0,0,0,0.51);
+				margin-bottom: 2em;
+				display:block;
+			}
+			#cat{
+				margin:2em auto;
+			}
+			
+			#bird{
+				margin: 0 0 0 auto;
+			}
+		</style>
+		<script src="lab1.js" defer="defer"></script>
+		<script>
+			alert(navigator.appName);
+			var x = 10;
+			var y = 20;
+			alert(x+y);
+		</script>
+
+	</head>
+	<body>
+		<img id="cat" src="cat.jpg" alt="cat" style="width: 300px">
+		<img id="dog" src="dog.jpg" alt="dog">
+		<img id="bird" src="bird.jpg" alt="bird">
+		
+		<script>
+			document.getElementById('dog').style.width = document.getElementById('cat').style.width;
+		</script>
+		
+	</body>
+</html>

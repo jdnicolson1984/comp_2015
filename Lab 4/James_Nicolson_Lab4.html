@@ -5,44 +5,9 @@
     <meta charset="UTF-8">
     <title>James Nicolson - Lab 4</title>
     <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
-    <style>
-        body {
-            text-align: center;
-        }
-
-        #player-score,
-        #computer-score {
-            border: 3px solid black;
-            background: #f97878;
-            padding: 0 20px;
-            display: inline-block;
-            font-size: 5em;
-            font-family: 'VT323', monospace;
-        }
-
-        #player-score {
-            margin-right: 1em;
-            background: #65de65;
-        }
-
-        #rock,
-        #paper,
-        #scissors {
-            display: inline-block;
-            margin: 3em;
-        }
-    </style>
-
-</head>
-
-<body>
     <script>
-        var pchoice = "";
-        var cchoice = "";
-        var pScore = 0;
-        var cScore = 0;
-
         function initialise() {
+
             var body = document.getElementsByTagName('body')[0];
 
             //Create & append player-score
@@ -95,6 +60,7 @@
             results.id = "results";
             results.innerHTML = "";
             body.appendChild(results);
+
         }
 
         function playerChoice(choice) {
@@ -173,24 +139,63 @@
             }
         }
 
-        initialise();
+        var pchoice = "";
+        var cchoice = "";
+        var pScore = 0;
+        var cScore = 0;
 
-        rock.onclick = function() {
-            playerChoice("rock");
-            computerChoice();
-            game(pchoice, cchoice);
-        }
-        paper.onclick = function() {
-            playerChoice("paper");
-            computerChoice();
-            game(pchoice, cchoice);
-        }
-        scissors.onclick = function() {
-            playerChoice("scissors");
-            computerChoice();
-            game(pchoice, cchoice);
+        window.onload = function() {
+
+            initialise();
+
+            rock.onclick = function() {
+                playerChoice("rock");
+                computerChoice();
+                game(pchoice, cchoice);
+            }
+            paper.onclick = function() {
+                playerChoice("paper");
+                computerChoice();
+                game(pchoice, cchoice);
+            }
+            scissors.onclick = function() {
+                playerChoice("scissors");
+                computerChoice();
+                game(pchoice, cchoice);
+            }
         }
     </script>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #player-score,
+        #computer-score {
+            border: 3px solid black;
+            background: #f97878;
+            padding: 0 20px;
+            display: inline-block;
+            font-size: 5em;
+            font-family: 'VT323', monospace;
+        }
+
+        #player-score {
+            margin-right: 1em;
+            background: #65de65;
+        }
+
+        #rock,
+        #paper,
+        #scissors {
+            display: inline-block;
+            margin: 3em;
+        }
+    </style>
+
+</head>
+
+<body>
 
 </body>
 

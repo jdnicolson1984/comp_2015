@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>James Nicolson - Lab 4</title>
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #player-score,
+        #computer-score {
+            border: 3px solid black;
+            background: #f97878;
+            padding: 0 20px;
+            display: inline-block;
+            font-size: 5em;
+            font-family: 'VT323', monospace;
+        }
+
+        #player-score {
+            margin-right: 1em;
+            background: #65de65;
+        }
+
+        #rock,
+        #paper,
+        #scissors {
+            display: inline-block;
+            margin: 3em;
+        }
+    </style>
+
+</head>
+
+<body>
+    <script>
+        var pchoice = "";
+        var cchoice = "";
+        var pScore = 0;
+        var cScore = 0;
+
+        function initialise() {
+            var body = document.getElementsByTagName('body')[0];
+
+            //Create & append player-score
+            var pscoreDiv = document.createElement('div');
+            var pscoreContainer = document.createTextNode(pScore.toString());
+            pscoreDiv.id = "player-score";
+            pscoreDiv.append(pscoreContainer);
+            body.appendChild(pscoreDiv);
+
+            //Create & append computer-score
+            var cscoreDiv = document.createElement('div');
+            var cscoreContainer = document.createTextNode(cScore.toString());
+            cscoreDiv.id = "computer-score";
+            cscoreDiv.append(cscoreContainer);
+            body.appendChild(cscoreDiv);
+
+            //Create & append container
+            var container = document.createElement('div');
+            container.id = "container";
+            container.style.width = "100";
+            body.appendChild(container);
+
+            //Create & append Rock
+            var rock = document.createElement('div');
+            rock.id = "rock";
+            rock.style.height = "100px";
+            rock.style.width = "100px";
+            rock.style.background = "url('rps.png')";
+            body.appendChild(rock);
+
+            //Create & append Paper
+            var paper = document.createElement('div');
+            paper.id = "paper";
+            paper.style.height = "100px";
+            paper.style.width = "160px";
+            paper.style.background = "url('rps.png')";
+            paper.style.backgroundPosition = "-100px";
+            body.appendChild(paper);
+
+            //Create & append Scissors
+            var scissors = document.createElement('div');
+            scissors.id = "scissors";
+            scissors.style.height = "109px";
+            scissors.style.width = "133px";
+            scissors.style.background = "url('rps.png')";
+            scissors.style.backgroundPosition = "133px";
+            body.appendChild(scissors);
+
+            var results = document.createElement('div');
+            results.id = "results";
+            results.innerHTML = "";
+            body.appendChild(results);
+        }
+
+        function playerChoice(choice) {
+            if (choice == "rock") {
+                pchoice = "rock";
+            } else if (choice == "paper") {
+                pchoice = "paper";
+            } else {
+                pchoice = "scissors";
+            }
+            console.log(pchoice);
+        }
+
+        function computerChoice() {
+            var choiceNumber = Math.random();
+            if (choiceNumber < 0.3) {
+                cchoice = "rock";
+            } else if (choiceNumber < 0.6) {
+                cchoice = "paper";
+            } else {
+                cchoice = "scissors"
+            }
+            console.log(cchoice);
+        }
+
+        function game(playerChoice, computerChoice) {
+            if (playerChoice == "rock") {
+                if (computerChoice == "rock") {
+                    document.getElementById("results").innerHTML = "Computer picked ROCK - It is a draw"
+                } else if (computerChoice == "paper") {
+                    cScore++;
+                    document.getElementById("computer-score").innerHTML = cScore;
+                    document.getElementById("results").innerHTML = "Computer picked PAPER - You Lose"
+                } else {
+                    pScore++;
+                    document.getElementById("player-score").innerHTML = pScore;
+                    document.getElementById("results").innerHTML = "Computer picked SCISSORS - You Win"
+                }
+            } else if (playerChoice == "paper") {
+                if (computerChoice == "paper") {
+                    document.getElementById("results").innerHTML = "Computer picked PAPER - It is a draw"
+                } else if (computerChoice == "scissors") {
+                    cScore++;
+                    document.getElementById("computer-score").innerHTML = cScore;
+                    document.getElementById("results").innerHTML = "Computer picked SCISSORS - You Lose"
+                } else {
+                    pScore++;
+                    document.getElementById("player-score").innerHTML = pScore;
+                    document.getElementById("results").innerHTML = "Computer picked ROCK - You Win"
+                }
+            } else {
+                if (computerChoice == "scissors") {
+                    document.getElementById("results").innerHTML = "Computer picked SCISSORS - It is a draw"
+                } else if (computerChoice == "rock") {
+                    cScore++
+                    document.getElementById("computer-score").innerHTML = cScore;
+                    document.getElementById("results").innerHTML = "Computer picked ROCK - You Lose"
+                } else {
+                    pScore++;
+                    document.getElementById("player-score").innerHTML = pScore;
+                    document.getElementById("results").innerHTML = "Computer picked PAPER - You Win"
+                }
+            }
+            if (pScore == 5) {
+                alert("GAME OVER - YOU WON\nPLAYER: " + pScore + ' COMPUTER: ' + cScore);
+                pScore = 0;
+                cScore = 0
+                document.getElementById("player-score").innerHTML = pScore;
+                document.getElementById("computer-score").innerHTML = cScore;
+            } else if (cScore == 5) {
+                alert("GAME OVER - COMPUTER WON\nPLAYER: " + pScore + 'COMPUTER: ' + cScore);
+                pScore = 0;
+                cScore = 0
+                document.getElementById("player-score").innerHTML = pScore;
+                document.getElementById("computer-score").innerHTML = cScore;
+            }
+        }
+
+        initialise();
+
+        rock.onclick = function() {
+            playerChoice("rock");
+            computerChoice();
+            game(pchoice, cchoice);
+        }
+        paper.onclick = function() {
+            playerChoice("paper");
+            computerChoice();
+            game(pchoice, cchoice);
+        }
+        scissors.onclick = function() {
+            playerChoice("scissors");
+            computerChoice();
+            game(pchoice, cchoice);
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <script>
+        function city(cityName, province, provinceShort, weatherUrl) {
+            this.cityName = cityName,
+                this.province = province,
+                this.provinceShort = provinceShort,
+                this.weatherUrl = weatherUrl
+        }
+
+        function getCity() {
+            $('p').remove();
+            var city = this.value;
+            for (var key in canadianCities) {
+                if (canadianCities[key].cityName == city) {
+                    $('body').append('<p>' + canadianCities[key].cityName + ' - ' + canadianCities[key].province + '</p>');
+                    // output.innerHTML = canadianCities[key].cityName;
+                    // output.append(document.createElement('br'));
+                    $.get(canadianCities[key].weatherUrl, callback);
+                }
+            }
+        }
+
+        var callback = function(data) {
+            var days = data.query.results.channel.item.forecast;
+            for (var i = 0; i < days.length; i++) {
+                var day = days[i];
+                $('body').append('<p>' + day.date + ' - ' + day.text + '</p>');
+                // output.append(day.date + ' - ' + day.text);
+                // output.append(document.createElement('br'));
+            }
+        };
+
+        var vancouver = new city("Vancouver", "British Columbia", "BC",
+            'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22vancouver%2C bc%22)%20and%20u%20%3D%20"c"&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys'
+        );
+        var calgary = new city("Calgary", "Alberta", "AB",
+            'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22calgary%2C bc%22)%20and%20u%20%3D%20"c"&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys'
+        );
+        var toronto = new city("Toronto", "Ontario", "ON",
+            'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22toronto%2C bc%22)%20and%20u%20%3D%20"c"&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys'
+        );
+        var montreal = new city("Montreal", "Quebec", "QB",
+            'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22montreal%2C bc%22)%20and%20u%20%3D%20"c"&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys'
+        );
+        var winnipeg = new city("Winnipeg", "Manitoba", 'MT',
+            'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22winnipeg%2C bc%22)%20and%20u%20%3D%20"c"&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys'
+        );
+
+        var canadianCities = {
+            vancouver: vancouver,
+            calgary: calgary,
+            toronto: toronto,
+            montreal: montreal,
+            winnipeg: winnipeg
+        }
+
+        // var body = document.getElementsByTagName("body")[0];
+        var select = document.createElement("select");
+        var output = document.createElement("p");
+        // $('body').appendChild(select);
+        $('body').append(select);
+        select.append(document.createElement("option"));
+        $('body').append(output);
+
+        for (var key in canadianCities) {
+            var option = document.createElement("option");
+            option.value = canadianCities[key].cityName;
+            option.innerHTML = canadianCities[key].cityName + " : " + canadianCities[key].provinceShort;
+            select.append(option);
+        }
+
+        select.onchange = getCity;
+    </script>
+
+</body>
+
+</html>

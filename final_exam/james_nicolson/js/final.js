@@ -29,9 +29,9 @@ function runFinalCode() {
       - Add answer below.
     */
     var paragraphs = document.getElementsByTagName('p');
-    console.log(paragraphs);
     for (var i = 0; i < paragraphs.length; i++) {
         paragraphs[i].style.fontSize = "20px";
+        paragraphs[i].style.color = "green";
     }
 
     console.info('Question 5 --------------------------------------------');
@@ -125,7 +125,7 @@ function runFinalCode() {
     It also cannot be hidden, so the user will always be able to see what has been executed.
 
     - What is jQuery?
-    JQuery is a javascript library designed to make common Javascript tasks much simpler to perform. These includes DOM identification and manipulation, event handling, animation and AJAX.
+    JQuery is a javascript library designed to make common Javascript tasks much simpler to perform. These include DOM identification and manipulation, event handling, animation and AJAX.
 
     */
 }
